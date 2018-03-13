@@ -1,12 +1,7 @@
 // app/components/RootScreen/index.js
 
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 const styles = StyleSheet.create({
