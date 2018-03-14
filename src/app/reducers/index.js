@@ -1,4 +1,4 @@
-// app/reducers/index.js
+// src/app/reducers/index.js
 
 import { combineReducers } from 'redux';
 import routes from './routes';

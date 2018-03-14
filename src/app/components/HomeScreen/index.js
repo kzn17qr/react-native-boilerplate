@@ -1,8 +1,8 @@
-// app/components/RootScreen/index.js
+// src/app/components/RootScreen/index.js
 
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,13 +15,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const Home = () => (
+const HomeScreen = props => (
   <View style={styles.container}>
     <Text style={styles.text}>Home Screen</Text>
-    <TouchableOpacity onPress={Actions.editScr}>
+    <TouchableOpacity onPress={() => props.navigation.navigate('Edit')}>
       <Text>Edit</Text>
     </TouchableOpacity>
   </View>
 );
 
-export default Home;
+HomeScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
+
+export default HomeScreen;

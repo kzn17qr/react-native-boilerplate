@@ -1,4 +1,4 @@
-// app/components/EditScreen/index.js
+// src/app/components/EditScreen/index.js
 
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
@@ -14,10 +14,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const Edit = () => (
+const EditScreen = () => (
   <View style={styles.container}>
     <Text style={styles.text}>Edit Screen</Text>
   </View>
 );
 
-export default Edit;
+export default EditScreen;

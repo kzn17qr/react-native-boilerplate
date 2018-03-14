@@ -1,4 +1,4 @@
-// app/reducers/routes.js
+// src/app/reducers/routes.js
 
 import { ActionConst } from 'react-native-router-flux';
 

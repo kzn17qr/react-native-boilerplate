@@ -3,8 +3,8 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
-import configureStore from './app/store/configureStore';
-import App from './app/App';
+import configureStore from './src/app/store/configureStore';
+import App from './src/app/App';
 
 const store = configureStore();
 
