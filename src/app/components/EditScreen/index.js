@@ -1,7 +1,8 @@
 // src/app/components/EditScreen/index.js
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,10 +15,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const EditScreen = () => (
+const EditScreen = props => (
   <View style={styles.container}>
     <Text style={styles.text}>Edit Screen</Text>
+    <TouchableOpacity onPress={() => props.navigation.goBack()}>
+      <Text>Back</Text>
+    </TouchableOpacity>
   </View>
 );
+
+EditScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 export default EditScreen;
