@@ -8,11 +8,18 @@ import EditScreen from './components/EditScreen';
 
 const RootStack = StackNavigator(
   {
-    Home: { screen: HomeScreen },
-    Edit: { screen: EditScreen },
+    Home: {
+      screen: HomeScreen,
+    },
+    Edit: {
+      screen: EditScreen,
+    },
   },
   {
     initialRouteName: 'Home',
+    initialRouteParams: {
+      title: 'Home',
+    },
   },
 );
 

@@ -14,34 +14,73 @@ import {
   Right,
   Body,
   Icon,
+  Badge,
   Text,
+  Form,
+  Item,
+  Input,
+  Label,
   ActionSheet,
+  Segment,
+  Spinner,
 } from 'native-base';
 // import { styles } from '../../assets/styles';
 
-const HomeScreen = props => (
+const HomeScreen = ({ navigation, navigation: { state: { params } } }) => (
   <Container>
-    <Header>
+    <Header hasTabs>
       <Left>
-        <Button transparent>
+        <Button transparent onPress={() => console.log('Menu button tapped.')}>
           <Icon name="menu" />
         </Button>
       </Left>
+
       <Body>
-        <Title>Header</Title>
+        <Title>{params.title}</Title>
       </Body>
-      <Right />
+
+      <Right>
+        <Button transparent onPress={() => console.log('Search button tapped')}>
+          <Icon name="search" />
+        </Button>
+      </Right>
     </Header>
+
+    <Segment>
+      <Button first>
+        <Text>Seg1</Text>
+      </Button>
+      <Button last active>
+        <Text>Seg2</Text>
+      </Button>
+    </Segment>
+
     <Content padder>
       <Text>This is Content Section</Text>
+      <Spinner />
+      <Form>
+        <Item floatingLabel>
+          <Label>UserName</Label>
+          <Input />
+        </Item>
+        <Item>
+          <Input placeholder="Password" />
+        </Item>
+      </Form>
+
       <Button
         bordered
         transparent
-        onPress={() => props.navigation.navigate('Edit')}
+        block
+        iconLeft
+        onPress={() => navigation.navigate('Edit', { title: 'Edit' })}
       >
+        <Icon name="create" />
         <Text>Edit</Text>
       </Button>
+
       <Button
+        block
         onPress={() =>
           ActionSheet.show(
             {
@@ -58,10 +97,28 @@ const HomeScreen = props => (
         <Text>ActionSheet</Text>
       </Button>
     </Content>
+
     <Footer>
       <FooterTab>
-        <Button full>
-          <Text>Footer</Text>
+        <Button badge vertical>
+          <Badge>
+            <Text>1</Text>
+          </Badge>
+          <Icon name="apps" />
+          <Text>Apps</Text>
+        </Button>
+
+        <Button active badge vertical>
+          <Badge primary>
+            <Text>18</Text>
+          </Badge>
+          <Icon name="camera" />
+          <Text>Camera</Text>
+        </Button>
+
+        <Button vertical>
+          <Icon name="person" />
+          <Text>Contact</Text>
         </Button>
       </FooterTab>
     </Footer>
