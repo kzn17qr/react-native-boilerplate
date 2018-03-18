@@ -1,4 +1,4 @@
-// index.ios.js
+// @flow
 
 import { AppRegistry } from 'react-native';
 

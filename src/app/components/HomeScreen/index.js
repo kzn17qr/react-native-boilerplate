@@ -26,8 +26,12 @@ import {
 } from 'native-base';
 // import { styles } from '../../assets/styles';
 
+type Props = {
+  navigation: Object,
+};
+
 // const HomeScreen = ({ navigation, navigation: { state: { params } } }) => (
-const HomeScreen = ({ navigation }) => (
+const HomeScreen = ({ navigation }: Props) => (
   <Container>
     <Header hasTabs>
       <Left>

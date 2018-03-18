@@ -7,7 +7,7 @@ import { RootStack } from '../navigators/AppNavigator';
 const navRouter = RootStack.router;
 const initialState = navRouter.getStateForAction(navRouter.getActionForPathAndParams('Home'));
 
-const routeReducer = (state = initialState, action = {}) => {
+const routeReducer = (state: Object = initialState, action: Object) => {
   const nextState = navRouter.getStateForAction(action, state);
   return nextState || state;
 };

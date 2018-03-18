@@ -6,7 +6,14 @@ import PropTypes from 'prop-types';
 
 import { styles } from '../../assets/styles';
 
-const EditScreen = ({ navigation, navigation: { state: { params } } }) => (
+type Props = {
+  navigation: Object,
+};
+
+const EditScreen = ({
+  navigation,
+  navigation: { state: { params } },
+}: Props) => (
   <View style={styles.container}>
     <Text style={styles.text}>Edit Screen</Text>
     <Text>{params.title}</Text>
