@@ -1,8 +1,9 @@
-// src/app/components/EditScreen/index.js
+// @flow
 
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
+
 import { styles } from '../../assets/styles';
 
 const EditScreen = ({ navigation, navigation: { state: { params } } }) => (

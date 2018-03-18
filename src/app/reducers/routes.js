@@ -1,26 +1,15 @@
-// src/app/reducers/routes.js
+// @flow
 
-import { ActionConst } from 'react-native-router-flux';
+// import { ActionConst } from 'react-native-router-flux';
+// import { NavigationActions } from 'react-navigation';
+import { RootStack } from '../navigators/AppNavigator';
 
-const initialState = {
-  scene: {},
-};
+const navRouter = RootStack.router;
+const initialState = navRouter.getStateForAction(navRouter.getActionForPathAndParams('Home'));
 
 const routeReducer = (state = initialState, action = {}) => {
-  switch (action.type) {
-    // focus action is dispatched when a new screen comes into focus
-    case ActionConst.FOCUS:
-      console.log(`action=${action}`);
-      return {
-        ...state,
-        scene: action.scene,
-      };
-
-    // ...other actions
-
-    default:
-      return state;
-  }
+  const nextState = navRouter.getStateForAction(action, state);
+  return nextState || state;
 };
 
 export default routeReducer;

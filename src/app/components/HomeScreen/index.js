@@ -1,4 +1,4 @@
-// src/app/components/RootScreen/index.js
+// @flow
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -26,7 +26,8 @@ import {
 } from 'native-base';
 // import { styles } from '../../assets/styles';
 
-const HomeScreen = ({ navigation, navigation: { state: { params } } }) => (
+// const HomeScreen = ({ navigation, navigation: { state: { params } } }) => (
+const HomeScreen = ({ navigation }) => (
   <Container>
     <Header hasTabs>
       <Left>
@@ -36,7 +37,8 @@ const HomeScreen = ({ navigation, navigation: { state: { params } } }) => (
       </Left>
 
       <Body>
-        <Title>{params.title}</Title>
+        {/* <Title>{params.title}</Title> */}
+        <Title>Dummy</Title>
       </Body>
 
       <Right>

@@ -1,32 +1,20 @@
-// src/app/App.js
+// @flow
 
 import React from 'react';
 import { Root } from 'native-base';
-import { StackNavigator } from 'react-navigation';
-import HomeScreen from './components/HomeScreen';
-import EditScreen from './components/EditScreen';
+import { Provider } from 'react-redux';
 
-const RootStack = StackNavigator(
-  {
-    Home: {
-      screen: HomeScreen,
-    },
-    Edit: {
-      screen: EditScreen,
-    },
-  },
-  {
-    initialRouteName: 'Home',
-    initialRouteParams: {
-      title: 'Home',
-    },
-  },
+import AppNavigator from './navigators/AppNavigator';
+import configureStore from './store/configureStore';
+
+const store = configureStore();
+
+const BoilerPlate = () => (
+  <Provider store={store}>
+    <Root>
+      <AppNavigator />
+    </Root>
+  </Provider>
 );
 
-const App = () => (
-  <Root>
-    <RootStack />
-  </Root>
-);
-
-export default App;
+export default BoilerPlate;

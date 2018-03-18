@@ -1,10 +1,11 @@
-// src/app/reducers/index.js
+// @flow
 
 import { combineReducers } from 'redux';
+
 import routes from './routes';
 
 const rootReducer = combineReducers({
-  routes,
+  nav: routes,
 });
 
 export default rootReducer;

@@ -1,4 +1,4 @@
-// src/app/assets/styles/index.js
+// @flow
 
 import { StyleSheet } from 'react-native';
 
