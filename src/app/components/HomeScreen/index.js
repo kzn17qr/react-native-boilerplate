@@ -24,10 +24,11 @@ import {
   Segment,
   Spinner,
 } from 'native-base';
+import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
 // import { styles } from '../../assets/styles';
 
 type Props = {
-  navigation: Object,
+  navigation: NavigationScreenProp<NavigationRoute>,
 };
 
 // const HomeScreen = ({ navigation, navigation: { state: { params } } }) => (

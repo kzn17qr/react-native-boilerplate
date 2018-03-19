@@ -2,12 +2,13 @@
 
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
 import PropTypes from 'prop-types';
 
 import { styles } from '../../assets/styles';
 
 type Props = {
-  navigation: Object,
+  navigation: NavigationScreenProp<NavigationRoute>,
 };
 
 const EditScreen = ({
