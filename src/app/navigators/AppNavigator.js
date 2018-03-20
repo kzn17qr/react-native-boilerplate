@@ -1,8 +1,12 @@
 // @flow
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import { addNavigationHelpers, StackNavigator } from 'react-navigation';
+import {
+  addNavigationHelpers,
+  StackNavigator,
+  NavigationScreenProp,
+  NavigationRoute,
+} from 'react-navigation';
 import { connect } from 'react-redux';
 
 import HomeScreen from '../components/HomeScreen';
@@ -26,16 +30,16 @@ export const RootStack = StackNavigator(
   },
 );
 
-const AppWithNavigationState = ({ dispatch, nav }) => (
+type TypeProps = {
+  dispatch: Function,
+  nav: NavigationScreenProp<NavigationRoute>,
+};
+
+const AppWithNavigationState = ({ dispatch, nav }: TypeProps) => (
   <RootStack
     navigation={addNavigationHelpers({ dispatch, state: nav, addListener })}
   />
 );
-
-AppWithNavigationState.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.object.isRequired,
-};
 
 const mapStateToProps = state => ({
   nav: state.nav,

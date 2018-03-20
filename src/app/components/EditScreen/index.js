@@ -3,18 +3,17 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
-import PropTypes from 'prop-types';
 
 import { styles } from '../../assets/styles';
 
-type Props = {
+type TypeProps = {
   navigation: NavigationScreenProp<NavigationRoute>,
 };
 
 const EditScreen = ({
   navigation,
   navigation: { state: { params } },
-}: Props) => (
+}: TypeProps) => (
   <View style={styles.container}>
     <Text style={styles.text}>Edit Screen</Text>
     <Text>{params.title}</Text>
@@ -23,9 +22,5 @@ const EditScreen = ({
     </TouchableOpacity>
   </View>
 );
-
-EditScreen.propTypes = {
-  navigation: PropTypes.object.isRequired,
-};
 
 export default EditScreen;
