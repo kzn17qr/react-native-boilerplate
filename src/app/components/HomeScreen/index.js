@@ -13,7 +13,6 @@ import {
   Right,
   Body,
   Icon,
-  Badge,
   Text,
   Form,
   Item,
@@ -24,6 +23,8 @@ import {
   Spinner,
 } from 'native-base';
 import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
+
+import Badges from '../Badges';
 // import { styles } from '../../assets/styles';
 
 const icons = {
@@ -44,20 +45,6 @@ const icons = {
   },
 };
 
-type TypeBadges = {
-  obj: string,
-  primaryFlg: boolean,
-};
-
-const Badges = ({ obj, primaryFlg = false }: TypeBadges) =>
-  (icons[obj].badgeFlg ? (
-    <Badge primary={primaryFlg}>
-      <Text>{icons[obj].badgeCnt}</Text>
-    </Badge>
-  ) : (
-    ''
-  ));
-
 type TypeProps = {
   navigation: NavigationScreenProp<NavigationRoute>,
 };
@@ -73,8 +60,7 @@ const HomeScreen = ({ navigation }: TypeProps) => (
       </Left>
 
       <Body>
-        {/* <Title>{params.title}</Title> */}
-        <Title>Dummy</Title>
+        <Title>{navigation.title}</Title>
       </Body>
 
       <Right>
@@ -143,7 +129,10 @@ const HomeScreen = ({ navigation }: TypeProps) => (
           badge={icons.apps.badgeFlg}
           vertical
         >
-          <Badges obj="apps" />
+          <Badges
+            badgeFlg={icons.apps.badgeFlg}
+            badgeCnt={icons.apps.badgeCnt}
+          />
           <Icon name="apps" />
           <Text>Apps</Text>
         </Button>
@@ -153,7 +142,11 @@ const HomeScreen = ({ navigation }: TypeProps) => (
           badge={icons.camera.badgeFlg}
           vertical
         >
-          <Badges obj="camera" primaryFlg />
+          <Badges
+            badgeFlg={icons.camera.badgeFlg}
+            badgeCnt={icons.camera.badgeCnt}
+            primaryFlg
+          />
           <Icon name="camera" />
           <Text>Camera</Text>
         </Button>
@@ -163,7 +156,10 @@ const HomeScreen = ({ navigation }: TypeProps) => (
           badge={icons.contact.badgeFlg}
           vertical
         >
-          <Badges obj="contact" />
+          <Badges
+            badgeFlg={icons.contact.badgeFlg}
+            badgeCnt={icons.contact.badgeCnt}
+          />
           <Icon name="person" />
           <Text>Contact</Text>
         </Button>

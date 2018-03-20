@@ -17,16 +17,19 @@ export const RootStack = StackNavigator(
   {
     Home: {
       screen: HomeScreen,
+      navigationOptions: {
+        title: 'Home',
+      },
     },
     Edit: {
       screen: EditScreen,
+      navigationOptions: {
+        title: 'Edit',
+      },
     },
   },
   {
     initialRouteName: 'Home',
-    initialRouteParams: {
-      title: 'Home',
-    },
   },
 );
 
