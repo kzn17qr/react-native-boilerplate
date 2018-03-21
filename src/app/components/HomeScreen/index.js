@@ -24,8 +24,7 @@ import {
 } from 'native-base';
 import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
 
-import Badges from '../Badges';
-// import { styles } from '../../assets/styles';
+import ButtonWithBadge from '../ButtonWithBadge';
 
 const icons = {
   apps: {
@@ -124,45 +123,31 @@ const HomeScreen = ({ navigation }: TypeProps) => (
 
     <Footer>
       <FooterTab>
-        <Button
-          active={icons.apps.activeFlg}
-          badge={icons.apps.badgeFlg}
-          vertical
-        >
-          <Badges
-            badgeFlg={icons.apps.badgeFlg}
-            badgeCnt={icons.apps.badgeCnt}
-          />
-          <Icon name="apps" />
-          <Text>Apps</Text>
-        </Button>
+        <ButtonWithBadge
+          iconName="apps"
+          btnText="Apps"
+          activeFlg={icons.apps.activeFlg}
+          badgeFlg={icons.apps.badgeFlg}
+          badgeCnt={icons.apps.badgeCnt}
+          // badgeAttr={{ success: true }}
+        />
 
-        <Button
-          active={icons.camera.activeFlg}
-          badge={icons.camera.badgeFlg}
-          vertical
-        >
-          <Badges
-            badgeFlg={icons.camera.badgeFlg}
-            badgeCnt={icons.camera.badgeCnt}
-            primaryFlg
-          />
-          <Icon name="camera" />
-          <Text>Camera</Text>
-        </Button>
+        <ButtonWithBadge
+          iconName="camera"
+          btnText="Camera"
+          activeFlg={icons.camera.activeFlg}
+          badgeFlg={icons.camera.badgeFlg}
+          badgeCnt={icons.camera.badgeCnt}
+          badgeAttr={{ info: true }}
+        />
 
-        <Button
-          active={icons.contact.activeFlg}
-          badge={icons.contact.badgeFlg}
-          vertical
-        >
-          <Badges
-            badgeFlg={icons.contact.badgeFlg}
-            badgeCnt={icons.contact.badgeCnt}
-          />
-          <Icon name="person" />
-          <Text>Contact</Text>
-        </Button>
+        <ButtonWithBadge
+          iconName="person"
+          btnText="Contact"
+          activeFlg={icons.contact.activeFlg}
+          badgeFlg={icons.contact.badgeFlg}
+          badgeCnt={icons.contact.badgeCnt}
+        />
       </FooterTab>
     </Footer>
   </Container>

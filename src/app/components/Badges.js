@@ -6,12 +6,12 @@ import { Badge, Text } from 'native-base';
 type TypeBadges = {
   badgeFlg: boolean,
   badgeCnt: number,
-  primaryFlg?: boolean,
+  badgeAttr?: any,
 };
 
-const Badges = ({ badgeFlg, badgeCnt, primaryFlg = false }: TypeBadges) =>
+const Badges = ({ badgeFlg, badgeCnt, badgeAttr }: TypeBadges) =>
   (badgeFlg ? (
-    <Badge primary={primaryFlg}>
+    <Badge {...badgeAttr}>
       <Text>{badgeCnt}</Text>
     </Badge>
   ) : (
@@ -19,7 +19,7 @@ const Badges = ({ badgeFlg, badgeCnt, primaryFlg = false }: TypeBadges) =>
   ));
 
 Badges.defaultProps = {
-  primaryFlg: false,
+  badgeAttr: null,
 };
 
 export default Badges;
