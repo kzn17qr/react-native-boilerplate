@@ -7,30 +7,28 @@ import Badges from './Badges';
 
 type TypeButtonWithBadge = {
   iconName: string,
-  btnText: string,
-  activeFlg: boolean,
-  badgeFlg: boolean,
+  btnText?: string,
+  active?: boolean,
   badgeCnt: number,
-  badgeAttr?: any,
 };
 
 const ButtonWithBadge = ({
   iconName,
   btnText,
-  activeFlg,
-  badgeFlg,
+  active,
   badgeCnt,
-  badgeAttr,
+  ...rest
 }: TypeButtonWithBadge) => (
-  <Button active={activeFlg} badge={badgeFlg} vertical>
-    <Badges badgeFlg={badgeFlg} badgeCnt={badgeCnt} badgeAttr={badgeAttr} />
+  <Button vertical active={active} badge={badgeCnt > 0}>
+    <Badges badgeCnt={badgeCnt} {...rest} />
     <Icon name={iconName} />
     <Text>{btnText}</Text>
   </Button>
 );
 
 ButtonWithBadge.defaultProps = {
-  badgeAttr: null,
+  btnText: '',
+  active: false,
 };
 
 export default ButtonWithBadge;

@@ -29,18 +29,15 @@ import ButtonWithBadge from '../ButtonWithBadge';
 const icons = {
   apps: {
     activeFlg: false,
-    badgeFlg: true,
-    badgeCnt: 7,
+    badgeCnt: 2,
   },
   camera: {
     activeFlg: true,
-    badgeFlg: true,
-    badgeCnt: 12,
+    badgeCnt: 1,
   },
   contact: {
     activeFlg: false,
-    badgeFlg: false,
-    badgeCnt: 3,
+    badgeCnt: 0,
   },
 };
 
@@ -125,27 +122,23 @@ const HomeScreen = ({ navigation }: TypeProps) => (
       <FooterTab>
         <ButtonWithBadge
           iconName="apps"
-          btnText="Apps"
-          activeFlg={icons.apps.activeFlg}
-          badgeFlg={icons.apps.badgeFlg}
+          // btnText="Apps"
+          active={icons.apps.activeFlg}
           badgeCnt={icons.apps.badgeCnt}
-          // badgeAttr={{ success: true }}
         />
 
         <ButtonWithBadge
           iconName="camera"
           btnText="Camera"
-          activeFlg={icons.camera.activeFlg}
-          badgeFlg={icons.camera.badgeFlg}
+          active={icons.camera.activeFlg}
           badgeCnt={icons.camera.badgeCnt}
-          badgeAttr={{ info: true }}
+          info
         />
 
         <ButtonWithBadge
           iconName="person"
           btnText="Contact"
-          activeFlg={icons.contact.activeFlg}
-          badgeFlg={icons.contact.badgeFlg}
+          active={icons.contact.activeFlg}
           badgeCnt={icons.contact.badgeCnt}
         />
       </FooterTab>
