@@ -26,9 +26,4 @@ const ButtonWithBadge = ({
   </Button>
 );
 
-ButtonWithBadge.defaultProps = {
-  btnText: '',
-  active: false,
-};
-
 export default ButtonWithBadge;
