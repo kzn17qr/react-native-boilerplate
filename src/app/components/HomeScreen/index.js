@@ -23,8 +23,11 @@ import {
   Spinner,
 } from 'native-base';
 import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
+import { connect } from 'react-redux';
 
 import ButtonWithBadge from '../ButtonWithBadge';
+// import badgeCount from '../../reducers/badgeCount';
+import { badgeCountAction } from '../../actions/BadgeCountAction';
 
 const icons = {
   apps: {
@@ -43,14 +46,22 @@ const icons = {
 
 type TypeProps = {
   navigation: NavigationScreenProp<NavigationRoute>,
+  onClick: Function,
+  count: number,
 };
 
 // const HomeScreen = ({ navigation, navigation: { state: { params } } }) => (
-const HomeScreen = ({ navigation }: TypeProps) => (
+const HomeScreen = ({ navigation, onClick, count }: TypeProps) => (
   <Container>
     <Header hasTabs>
       <Left>
-        <Button transparent onPress={() => console.log('Menu button tapped.')}>
+        <Button
+          transparent
+          onPress={() => {
+            console.log(`'Menu button tapped. ${count}`);
+            onClick();
+          }}
+        >
           <Icon name="menu" />
         </Button>
       </Left>
@@ -122,7 +133,7 @@ const HomeScreen = ({ navigation }: TypeProps) => (
       <FooterTab>
         <ButtonWithBadge
           iconName="apps"
-          // btnText="Apps"
+          btnText="Apps"
           active={icons.apps.activeFlg}
           badgeCnt={icons.apps.badgeCnt}
         />
@@ -146,4 +157,14 @@ const HomeScreen = ({ navigation }: TypeProps) => (
   </Container>
 );
 
-export default HomeScreen;
+const mapStateToProps = state => ({
+  count: state.count,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onClick() {
+    dispatch(badgeCountAction(1));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
