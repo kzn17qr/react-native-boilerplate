@@ -25,8 +25,9 @@ import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import ButtonWithBadge from '../ButtonWithBadge';
-import { badgeCountAction } from '../../actions/BadgeCountAction';
-import HomeHeader from './Header';
+// import { badgeCountAction } from '../../actions/BadgeCountAction';
+import MenuButton from './MenuButton';
+import SearchButton from './SearchButton';
 
 const icons = {
   apps: {
@@ -128,7 +129,7 @@ HomeScreen.navigationOptions = {
   header: (
     <Header hasTabs>
       <Left>
-        <HomeHeader />
+        <MenuButton />
       </Left>
 
       <Body>
@@ -144,9 +145,10 @@ HomeScreen.navigationOptions = {
       </Body>
 
       <Right>
-        <Button transparent onPress={() => console.log('Search button tapped')}>
+        {/* <Button transparent onPress={() => console.log('Search button tapped')}>
           <Icon name="search" />
-        </Button>
+        </Button> */}
+        <SearchButton />
       </Right>
     </Header>
   ),
@@ -156,10 +158,10 @@ const mapStateToProps = state => ({
   count: state.badgeCount.count,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onClick() {
-    dispatch(badgeCountAction(1));
-  },
-});
+// const mapDispatchToProps = dispatch => ({
+//   onClick() {
+//     dispatch(badgeCountAction(1));
+//   },
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, null)(HomeScreen);

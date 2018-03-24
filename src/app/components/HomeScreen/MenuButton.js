@@ -10,7 +10,7 @@ type TypeProps = {
   onClick: Function,
 };
 
-const HeaderButton = ({ onClick }: TypeProps) => (
+const MenuButton = ({ onClick }: TypeProps) => (
   <Button
     transparent
     onPress={() => {
@@ -27,4 +27,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(HeaderButton);
+export default connect(null, mapDispatchToProps)(MenuButton);
