@@ -12,7 +12,7 @@ import {
   Input,
   Label,
   ActionSheet,
-  Spinner,
+  // Spinner,
 } from 'native-base';
 import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -32,7 +32,7 @@ const HomeScreen = ({ navigation, count }: TypeProps) => (
   <Container>
     <Content padder>
       <Text>This is Content Section</Text>
-      <Spinner />
+      {/* <Spinner /> */}
       <Form>
         <Item floatingLabel>
           <Label>UserName</Label>

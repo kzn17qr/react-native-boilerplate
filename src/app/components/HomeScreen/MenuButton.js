@@ -4,7 +4,7 @@ import React from 'react';
 import { Button, Icon } from 'native-base';
 import { connect } from 'react-redux';
 
-import { badgeCountAction } from '../../actions/BadgeCountAction';
+import { badgeCountAction } from '../../actions/HomeHeaderAction';
 
 type TypeProps = {
   onClick: Function,

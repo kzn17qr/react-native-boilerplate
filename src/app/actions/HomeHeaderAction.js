@@ -7,4 +7,9 @@ const badgeCountAction = (count: number) => ({
   },
 });
 
-export { badgeCountAction };
+const searchAction = () => ({
+  type: 'SEARCH',
+  payload: {},
+});
+
+export { badgeCountAction, searchAction };

@@ -4,7 +4,7 @@ import React from 'react';
 import { Button, Icon } from 'native-base';
 import { connect } from 'react-redux';
 
-import { badgeCountAction } from '../../actions/BadgeCountAction';
+import { searchAction } from '../../actions/HomeHeaderAction';
 
 type TypeProps = {
   onClick: Function,
@@ -24,7 +24,7 @@ const SearchButton = ({ onClick }: TypeProps) => (
 
 const mapDispatchToProps = dispatch => ({
   onClick() {
-    dispatch(badgeCountAction(1));
+    dispatch(searchAction());
   },
 });
 
