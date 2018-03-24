@@ -4,7 +4,6 @@ import React from 'react';
 import {
   Container,
   Header,
-  Title,
   Content,
   Footer,
   FooterTab,
@@ -26,8 +25,8 @@ import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import ButtonWithBadge from '../ButtonWithBadge';
-// import badgeCount from '../../reducers/badgeCount';
 import { badgeCountAction } from '../../actions/BadgeCountAction';
+import HomeHeader from './Header';
 
 const icons = {
   apps: {
@@ -46,46 +45,13 @@ const icons = {
 
 type TypeProps = {
   navigation: NavigationScreenProp<NavigationRoute>,
-  onClick: Function,
+  // onClick: Function,
   count: number,
 };
 
 // const HomeScreen = ({ navigation, navigation: { state: { params } } }) => (
-const HomeScreen = ({ navigation, onClick, count }: TypeProps) => (
+const HomeScreen = ({ navigation, count }: TypeProps) => (
   <Container>
-    <Header hasTabs>
-      <Left>
-        <Button
-          transparent
-          onPress={() => {
-            console.log(`'Menu button tapped. ${count}`);
-            onClick();
-          }}
-        >
-          <Icon name="menu" />
-        </Button>
-      </Left>
-
-      <Body>
-        <Title>{navigation.title}</Title>
-      </Body>
-
-      <Right>
-        <Button transparent onPress={() => console.log('Search button tapped')}>
-          <Icon name="search" />
-        </Button>
-      </Right>
-    </Header>
-
-    <Segment>
-      <Button first>
-        <Text>Seg1</Text>
-      </Button>
-      <Button last active>
-        <Text>Seg2</Text>
-      </Button>
-    </Segment>
-
     <Content padder>
       <Text>This is Content Section</Text>
       <Spinner />
@@ -150,15 +116,44 @@ const HomeScreen = ({ navigation, onClick, count }: TypeProps) => (
           iconName="person"
           btnText="Contact"
           active={icons.contact.activeFlg}
-          badgeCnt={icons.contact.badgeCnt}
+          // badgeCnt={icons.contact.badgeCnt}
+          badgeCnt={count}
         />
       </FooterTab>
     </Footer>
   </Container>
 );
 
+HomeScreen.navigationOptions = {
+  header: (
+    <Header hasTabs>
+      <Left>
+        <HomeHeader />
+      </Left>
+
+      <Body>
+        {/* <Title>{navigation.title}</Title> */}
+        <Segment>
+          <Button first>
+            <Text>Seg1</Text>
+          </Button>
+          <Button last active>
+            <Text>Seg2</Text>
+          </Button>
+        </Segment>
+      </Body>
+
+      <Right>
+        <Button transparent onPress={() => console.log('Search button tapped')}>
+          <Icon name="search" />
+        </Button>
+      </Right>
+    </Header>
+  ),
+};
+
 const mapStateToProps = state => ({
-  count: state.count,
+  count: state.badgeCount.count,
 });
 
 const mapDispatchToProps = dispatch => ({
