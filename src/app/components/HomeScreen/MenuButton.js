@@ -22,9 +22,7 @@ const MenuButton = ({ onClick }: TypeProps) => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  onClick() {
-    dispatch(badgeCountAction(1));
-  },
+  onClick: () => dispatch(badgeCountAction(1)),
 });
 
 export default connect(null, mapDispatchToProps)(MenuButton);

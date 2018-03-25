@@ -85,9 +85,7 @@ const mapStateToProps = state => ({
 });
 
 // const mapDispatchToProps = dispatch => ({
-//   onClick() {
-//     dispatch(badgeCountAction(1));
-//   },
+//   onClick: () => dispatch(badgeCountAction(1)),
 // });
 
 export default connect(mapStateToProps, null)(HomeScreen);

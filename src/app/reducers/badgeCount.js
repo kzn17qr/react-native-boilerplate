@@ -1,5 +1,7 @@
 // @flow
 
+import { BADGE_COUNT } from '../actions/actionConstants';
+
 const initialState = {
   count: 0,
 };
@@ -17,7 +19,8 @@ type TypeAction = {
 
 const badgeCount = (state: TypeState = initialState, action: TypeAction) => {
   switch (action.type) {
-    case 'BADGE_COUNT':
+    case BADGE_COUNT:
+      console.log('badgeCount action', action, state);
       return { ...state, count: state.count + action.payload.count };
     default:
       return state;
