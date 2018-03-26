@@ -17,7 +17,10 @@ type TypeAction = {
   },
 };
 
-const badgeCount = (state: TypeState = initialState, action: TypeAction) => {
+const badgeCountReducer = (
+  state: TypeState = initialState,
+  action: TypeAction,
+) => {
   switch (action.type) {
     case BADGE_COUNT:
       console.log('badgeCount action', action, state);
@@ -27,4 +30,4 @@ const badgeCount = (state: TypeState = initialState, action: TypeAction) => {
   }
 };
 
-export default badgeCount;
+export default badgeCountReducer;

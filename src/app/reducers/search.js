@@ -11,7 +11,7 @@ type TypeAction = {
   payload: Object,
 };
 
-const search = (state: TypeState = initialState, action: TypeAction) => {
+const searchReducer = (state: TypeState = initialState, action: TypeAction) => {
   switch (action.type) {
     case SEARCH:
       console.log('search action', action, state);
@@ -21,4 +21,4 @@ const search = (state: TypeState = initialState, action: TypeAction) => {
   }
 };
 
-export default search;
+export default searchReducer;
