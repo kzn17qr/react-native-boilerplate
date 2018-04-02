@@ -3,9 +3,7 @@
 import React from 'react';
 import { Badge, Text } from 'native-base';
 
-type TypeBadges = {
-  badgeCnt: number,
-};
+import type { TypeBadges } from './types';
 
 const Badges = ({ badgeCnt, ...rest }: TypeBadges) =>
   (badgeCnt > 0 ? (
