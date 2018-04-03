@@ -6,7 +6,7 @@ import { Button, Icon, Text } from 'native-base';
 
 import type { TypeButtonWithBadge, TypeBadges } from '../types';
 
-const embedButtonWithBadge = (Component: ComponentType<TypeBadges>) => ({
+const embedButtonWithBadge = (WrappedComponent: ComponentType<TypeBadges>) => ({
   iconName,
   btnText,
   active,
@@ -14,7 +14,7 @@ const embedButtonWithBadge = (Component: ComponentType<TypeBadges>) => ({
   ...rest
 }: TypeButtonWithBadge) => (
   <Button vertical active={active} badge={badgeCnt > 0}>
-    <Component badgeCnt={badgeCnt} {...rest} />
+    <WrappedComponent badgeCnt={badgeCnt} {...rest} />
     <Icon name={iconName} />
     <Text>{btnText}</Text>
   </Button>
