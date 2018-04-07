@@ -4,7 +4,7 @@ import React from 'react';
 import { Button, Icon } from 'native-base';
 import { connect } from 'react-redux';
 
-import { searchAction } from '../../actions/HomeHeaderAction';
+import { searchAction, loading } from '../../actions/HomeHeaderAction';
 
 type TypeProps = {
   onClick: Function,
@@ -24,6 +24,7 @@ const SearchButton = ({ onClick }: TypeProps) => (
 
 const mapDispatchToProps = dispatch => ({
   onClick() {
+    dispatch(loading(true));
     dispatch(searchAction());
   },
 });

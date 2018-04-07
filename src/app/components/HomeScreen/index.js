@@ -20,19 +20,25 @@ import { connect } from 'react-redux';
 // import { badgeCountAction } from '../../actions/BadgeCountAction';
 import HomeHeader from './HomeHeader';
 import HomeFooter from './HomeFooter';
+import ApiService from '../../model/apiService';
+import SearchText from './SearchText';
 
 type TypeProps = {
   navigation: NavigationScreenProp<NavigationRoute>,
   // onClick: Function,
   count: number,
+  data: ApiService,
+  isLoading: boolean,
 };
 
 // const HomeScreen = ({ navigation, navigation: { state: { params } } }) => (
-const HomeScreen = ({ navigation, count }: TypeProps) => (
+const HomeScreen = ({
+  navigation, count, data, isLoading,
+}: TypeProps) => (
   <Container>
     <Content padder>
       <Text>This is Content Section</Text>
-      {/* <Spinner /> */}
+      <SearchText data={data} isLoading={isLoading} />
       <Form>
         <Item floatingLabel>
           <Label>UserName</Label>
@@ -42,7 +48,6 @@ const HomeScreen = ({ navigation, count }: TypeProps) => (
           <Input placeholder="Password" />
         </Item>
       </Form>
-
       <Button
         bordered
         transparent
@@ -53,7 +58,6 @@ const HomeScreen = ({ navigation, count }: TypeProps) => (
         <Icon name="create" />
         <Text>Edit</Text>
       </Button>
-
       <Button
         block
         onPress={() =>
@@ -82,6 +86,8 @@ HomeScreen.navigationOptions = {
 
 const mapStateToProps = state => ({
   count: state.badgeCount.count,
+  data: state.search.data,
+  isLoading: state.search.isLoading,
 });
 
 // const mapDispatchToProps = dispatch => ({
