@@ -1,17 +1,18 @@
 // @flow
 
 class ApiService {
-  series: string;
+  season: number;
   round: number;
-  raceDate: number;
+  url: string;
   raceName: string;
+  Circuit: Object;
+  date: string;
+  Laps: Object[];
+  // RaceTable: Object;
 
   constructor(props: *) {
-    const { MRData } = props;
-    this.series = MRData.series;
-    this.round = MRData.RaceTable.round;
-    this.raceDate = MRData.RaceTable.Races[0].date;
-    this.raceName = MRData.RaceTable.Races[0].raceName;
+    const { MRData: { RaceTable: { Races } } } = props;
+    Object.assign(this, Races[0]);
   }
 }
 

@@ -14,4 +14,15 @@ export const styles = StyleSheet.create({
   touchText: {
     fontSize: 24,
   },
+  searchList: {
+    height: 45,
+  },
+  searchBody: {
+    flexDirection: 'row',
+  },
+  searchTextNo: {
+    width: 18,
+    marginHorizontal: 8,
+    textAlign: 'right',
+  },
 });

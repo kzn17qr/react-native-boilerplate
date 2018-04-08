@@ -1,6 +1,6 @@
-import ApiService from './apiService';
-
 // @flow
+
+import ApiService from './apiService';
 
 const reqInit = {
   method: 'GET',

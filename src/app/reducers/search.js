@@ -4,7 +4,7 @@ import { SEARCH, LOADING } from '../actions/actionConstants';
 import ApiService from '../model/apiService';
 
 const initialState = {
-  data: {},
+  data: null,
 };
 
 type TypeState = {};

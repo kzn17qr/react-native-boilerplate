@@ -37,7 +37,7 @@ const HomeScreen = ({
 }: TypeProps) => (
   <Container>
     <Content padder>
-      <Text>This is Content Section</Text>
+      {/* <Text>This is Content Section</Text> */}
       <SearchText data={data} isLoading={isLoading} />
       <Form>
         <Item floatingLabel>
