@@ -10,8 +10,8 @@ const reqInit = {
   },
 };
 
-const getFetch = (): Promise<ApiService> => {
-  const url = 'https://ergast.com/api/f1/2018/1/laps/1.json';
+const getFetch = (lapNumber: number = 1): Promise<ApiService> => {
+  const url = `https://ergast.com/api/f1/current/last/laps/${lapNumber}.json`;
   return fetch(url, reqInit)
     .then(res => res.json())
     .then(json => new ApiService(json))

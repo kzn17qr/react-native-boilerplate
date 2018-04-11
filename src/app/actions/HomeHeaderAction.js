@@ -1,6 +1,6 @@
 // @flow
 
-import { BADGE_COUNT, SEARCH, LOADING } from './actionConstants';
+import { BADGE_COUNT, SEARCH, LOADING, INPUT_LAP } from './actionConstants';
 import { getFetch } from '../model/api';
 
 const badgeCountAction = (count: number) => ({
@@ -11,8 +11,8 @@ const badgeCountAction = (count: number) => ({
   },
 });
 
-const searchAction = () =>
-  getFetch().then(data => ({
+const searchAction = (lapNumber: number) =>
+  getFetch(lapNumber).then(data => ({
     type: SEARCH,
     payload: {
       data,
@@ -27,4 +27,11 @@ const loading = (isLoading: boolean) => ({
   },
 });
 
-export { badgeCountAction, searchAction, loading };
+const setLapNumber = (laps: string) => ({
+  type: INPUT_LAP,
+  payload: {
+    laps,
+  },
+});
+
+export { badgeCountAction, searchAction, loading, setLapNumber };

@@ -8,25 +8,29 @@ import { searchAction, loading } from '../../actions/HomeHeaderAction';
 
 type TypeProps = {
   onClick: Function,
+  laps: number,
 };
 
-const SearchButton = ({ onClick }: TypeProps) => (
+const SearchButton = ({ onClick, laps }: TypeProps) => (
   <Button
     transparent
     onPress={() => {
-      console.log('Search button tapped');
-      onClick();
+      onClick(laps);
     }}
   >
     <Icon name="search" />
   </Button>
 );
 
+const mapStateToProps = state => ({
+  laps: state.input.laps,
+});
+
 const mapDispatchToProps = dispatch => ({
-  onClick() {
+  onClick: (lapNumber) => {
     dispatch(loading(true));
-    dispatch(searchAction());
+    dispatch(searchAction(lapNumber));
   },
 });
 
-export default connect(null, mapDispatchToProps)(SearchButton);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchButton);

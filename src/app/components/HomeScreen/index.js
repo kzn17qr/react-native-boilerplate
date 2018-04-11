@@ -12,6 +12,8 @@ import {
   Input,
   Label,
   ActionSheet,
+  // Segment,
+  // Picker,
   // Spinner,
 } from 'native-base';
 import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
@@ -22,6 +24,7 @@ import HomeHeader from './HomeHeader';
 import HomeFooter from './HomeFooter';
 import ApiService from '../../model/apiService';
 import SearchText from './SearchText';
+import { setLapNumber } from '../../actions/HomeHeaderAction';
 
 type TypeProps = {
   navigation: NavigationScreenProp<NavigationRoute>,
@@ -29,14 +32,38 @@ type TypeProps = {
   count: number,
   data: ApiService,
   isLoading: boolean,
+  setLaps: Function,
+  laps: string,
 };
 
 // const HomeScreen = ({ navigation, navigation: { state: { params } } }) => (
 const HomeScreen = ({
-  navigation, count, data, isLoading,
+  navigation,
+  count,
+  data,
+  isLoading,
+  setLaps,
+  laps,
 }: TypeProps) => (
   <Container>
     <Content padder>
+      <Form>
+        <Item style={{ height: 20 }}>
+          <Input
+            keyboardType="numeric"
+            style={{ fontSize: 12 }}
+            placeholder="Input Lap Number"
+            // ref={(ref) => {
+            //   inputLaps = ref;
+            // }}
+            value={laps}
+            onChange={e => setLaps(e.nativeEvent.text)}
+          />
+        </Item>
+        {/* <Picker iosHeader="Select one" mode="dropdown">
+          <Item label="1" value="1" />
+        </Picker> */}
+      </Form>
       {/* <Text>This is Content Section</Text> */}
       <SearchText data={data} isLoading={isLoading} />
       <Form>
@@ -88,10 +115,11 @@ const mapStateToProps = state => ({
   count: state.badgeCount.count,
   data: state.search.data,
   isLoading: state.search.isLoading,
+  laps: state.input.laps,
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   onClick: () => dispatch(badgeCountAction(1)),
-// });
+const mapDispatchToProps = dispatch => ({
+  setLaps: laps => dispatch(setLapNumber(laps)),
+});
 
-export default connect(mapStateToProps, null)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

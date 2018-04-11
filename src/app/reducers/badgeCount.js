@@ -23,7 +23,6 @@ const badgeCountReducer = (
 ) => {
   switch (action.type) {
     case BADGE_COUNT:
-      console.log('badgeCount action', action, state);
       return { ...state, count: state.count + action.payload.count };
     default:
       return state;

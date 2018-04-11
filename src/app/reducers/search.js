@@ -7,7 +7,9 @@ const initialState = {
   data: null,
 };
 
-type TypeState = {};
+type TypeState = {
+  data: ?Object,
+};
 
 type TypeAction = {
   type: string,
@@ -20,7 +22,6 @@ type TypeAction = {
 const searchReducer = (state: TypeState = initialState, action: TypeAction) => {
   switch (action.type) {
     case SEARCH:
-      console.log('search action', action, state);
       return {
         ...state,
         data: action.payload.data,
