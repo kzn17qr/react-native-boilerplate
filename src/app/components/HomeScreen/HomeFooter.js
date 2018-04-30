@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Footer, FooterTab } from 'native-base';
+import { connect } from 'react-redux';
 
 import ButtonWithBadge from '../ButtonWithBadge';
 
@@ -53,4 +54,8 @@ const HomeFooter = ({ count }: TypeProps) => (
   </Footer>
 );
 
-export default HomeFooter;
+const mapStateToProps = state => ({
+  count: state.badgeCount.count,
+});
+
+export default connect(mapStateToProps, null)(HomeFooter);

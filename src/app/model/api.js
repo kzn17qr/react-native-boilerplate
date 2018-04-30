@@ -17,8 +17,19 @@ const getFetch = (lapNumber: number = 1): Promise<ApiService> => {
     .then(json => new ApiService(json))
     .catch((err) => {
       console.log(err);
-      return err;
+      return null;
     });
 };
 
-export { getFetch };
+const getFetches = (): Promise<ApiService> => {
+  const url = 'https://ergast.com/api/f1/current/last/laps.json?limit=2000';
+  return fetch(url, reqInit)
+    .then(res => res.json())
+    .then(json => new ApiService(json))
+    .catch((err) => {
+      console.log(err);
+      return null;
+    });
+};
+
+export { getFetch, getFetches };

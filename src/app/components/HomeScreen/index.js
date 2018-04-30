@@ -24,26 +24,30 @@ import HomeHeader from './HomeHeader';
 import HomeFooter from './HomeFooter';
 import ApiService from '../../model/apiService';
 import SearchText from './SearchText';
-import { setLapNumber } from '../../actions/HomeHeaderAction';
+import { setLapNumber, setDriver } from '../../actions/HomeHeaderAction';
 
 type TypeProps = {
   navigation: NavigationScreenProp<NavigationRoute>,
   // onClick: Function,
-  count: number,
+  // count: number,
   data: ApiService,
   isLoading: boolean,
   setLaps: Function,
-  laps: string,
+  setDriverId: Function,
+  laps: number,
+  driverId: string,
 };
 
 // const HomeScreen = ({ navigation, navigation: { state: { params } } }) => (
 const HomeScreen = ({
   navigation,
-  count,
+  // count,
   data,
   isLoading,
   setLaps,
+  setDriverId,
   laps,
+  driverId,
 }: TypeProps) => (
   <Container>
     <Content padder>
@@ -51,13 +55,24 @@ const HomeScreen = ({
         <Item style={{ height: 20 }}>
           <Input
             keyboardType="numeric"
-            style={{ fontSize: 12 }}
+            // style={{ fontSize: 12 }}
             placeholder="Input Lap Number"
             // ref={(ref) => {
             //   inputLaps = ref;
             // }}
-            value={laps}
+            maxLength={2}
+            value={`${laps}`}
             onChange={e => setLaps(e.nativeEvent.text)}
+          />
+          <Input
+            // keyboardType="numeric"
+            // style={{ fontSize: 12 }}
+            placeholder="Input Driver"
+            // ref={(ref) => {
+            //   inputLaps = ref;
+            // }}
+            value={driverId}
+            onChange={e => setDriverId(e.nativeEvent.text)}
           />
         </Item>
         {/* <Picker iosHeader="Select one" mode="dropdown">
@@ -103,7 +118,7 @@ const HomeScreen = ({
         <Text>ActionSheet</Text>
       </Button>
     </Content>
-    <HomeFooter count={count} />
+    <HomeFooter />
   </Container>
 );
 
@@ -120,6 +135,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setLaps: laps => dispatch(setLapNumber(laps)),
+  setDriverId: driverId => dispatch(setDriver(driverId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
