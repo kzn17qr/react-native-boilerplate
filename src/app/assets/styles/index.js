@@ -14,11 +14,18 @@ export const styles = StyleSheet.create({
   touchText: {
     fontSize: 24,
   },
+  pickerText: {
+    fontSize: 14,
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+  },
+  pickerItemText: {
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+  },
   searchList: {
     paddingHorizontal: 2,
   },
   searchListItem: {
-    height: 42,
+    height: 40,
     marginLeft: 0,
     marginTop: 0,
   },
@@ -31,6 +38,7 @@ export const styles = StyleSheet.create({
     width: 18,
   },
   searchDriver: {
+    fontSize: 14,
     fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
     marginHorizontal: 2,
   },

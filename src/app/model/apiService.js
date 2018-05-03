@@ -6,7 +6,11 @@ class ScheduleEntity {
     round: number,
     url: string,
     raceName: string,
-    Circuit: Object,
+    Circuit: {
+      Location: {
+        country: string,
+      },
+    },
     date: string,
   }>;
 

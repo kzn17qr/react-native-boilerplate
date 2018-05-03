@@ -15,8 +15,8 @@ type TypeCompare = {
   isDesc: boolean,
 };
 
-const lapCalc = (data: LapEntity, input: Object) => {
-  const obj = {};
+const lapCalc = (data: LapEntity, input: Object): LapEntity => {
+  const obj: Object = {};
   const [mIdx, sIdx] = [1, 4];
   input.driverId = input.driverId.toLowerCase();
 
@@ -37,9 +37,9 @@ const lapCalc = (data: LapEntity, input: Object) => {
         obj[x.driverId] = driverData;
       }
 
-      const mm = parseInt(x.time.substring(0, mIdx), 10);
-      const ss = parseInt(x.time.substring(sIdx - 2, sIdx), 10);
-      const ms = parseInt(x.time.substring(sIdx + 1), 10);
+      const mm: number = parseInt(x.time.substring(0, mIdx), 10);
+      const ss: number = parseInt(x.time.substring(sIdx - 2, sIdx), 10);
+      const ms: number = parseInt(x.time.substring(sIdx + 1), 10);
       obj[x.driverId].ts.setMinutes(obj[x.driverId].ts.getMinutes() + mm);
       obj[x.driverId].ts.setSeconds(obj[x.driverId].ts.getSeconds() + ss);
       obj[x.driverId].ts.setMilliseconds(obj[x.driverId].ts.getMilliseconds() + ms);
@@ -67,7 +67,7 @@ const lapCalc = (data: LapEntity, input: Object) => {
     if (obj[k].laps === `${input.laps}`) {
       obj[k].gap = `+${formatTime(new Date(obj[k].ts - topts), true)}`;
     } else {
-      obj[k].position = 'R';
+      obj[k].position = '-';
       obj[k].gap = `${obj[k].laps} LAPS`;
     }
     objLst.push(obj[k]);
@@ -106,7 +106,10 @@ const formatTime = (d: Date, toUTC: boolean = false): string => {
   return `${hh}${mm}${ss}${ms}`;
 };
 
-const sortObj = (key, isDesc) => (x, y) => {
+const sortObj = (key: string, isDesc: boolean): Function => (
+  x: Object,
+  y: Object,
+) => {
   if (
     !Object.hasOwnProperty.call(x, key) ||
     !Object.hasOwnProperty.call(y, key)
@@ -125,7 +128,10 @@ const sortObj = (key, isDesc) => (x, y) => {
   return isDesc ? compareResult * -1 : compareResult;
 };
 
-const sortObjMultiple = (keys: Array<TypeCompare>): Function => (x, y) => {
+const sortObjMultiple = (keys: Array<TypeCompare>): Function => (
+  x: Object,
+  y: Object,
+) => {
   let [i, result] = [0, 0];
 
   while (result === 0 && i < keys.length) {

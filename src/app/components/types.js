@@ -10,3 +10,8 @@ export type TypeButtonWithBadge = {
 export type TypeBadges = {
   badgeCnt: number,
 };
+
+export type TypeInput = {
+  laps: number,
+  round: number,
+};

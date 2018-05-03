@@ -32,6 +32,7 @@ import {
   // setDriver,
   getScheduleAction,
 } from '../../actions/HomeHeaderAction';
+import { styles } from '../../assets/styles';
 
 type TypeProps = {
   // navigation: NavigationScreenProp<NavigationRoute>,
@@ -67,17 +68,23 @@ const HomeScreenWithoutLC = ({
           placeholder="Select Race"
           onValueChange={value => setRound(value)}
           selectedValue={`${round}`}
+          textStyle={styles.pickerText}
+          itemTextStyle={styles.pickerItemText}
         >
           {Object.keys(schedules).length === 0
             ? ''
             : schedules.Races.map(v => (
-              <Picker.Item label={v.raceName} key={v.round} value={v.round} />
+              <Picker.Item
+                label={v.Circuit.Location.country}
+                key={v.round}
+                value={v.round}
+              />
               ))}
         </Picker>
         <Item>
           <Input
             keyboardType="numeric"
-            // style={{ fontSize: 12 }}
+            style={{ fontSize: 14 }}
             placeholder="Input Lap Number"
             // ref={(ref) => {
             //   inputLaps = ref;

@@ -17,7 +17,7 @@ const SearchText = ({ data, isLoading }: TypeProps) => {
   if (Object.keys(data).length === 0) return '';
   return (
     <View>
-      <Text>
+      <Text style={styles.pickerText}>
         [Race] {data.raceName} [Laps] {data.GapData[0].laps}
       </Text>
       <List

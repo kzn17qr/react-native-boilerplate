@@ -9,11 +9,7 @@ import {
   searchAllAction,
   loading,
 } from '../../actions/HomeHeaderAction';
-
-type TypeInput = {
-  laps: number,
-  // driverId: string,
-};
+import type { TypeInput } from '../types';
 
 type TypeProps = {
   onClick: Function,

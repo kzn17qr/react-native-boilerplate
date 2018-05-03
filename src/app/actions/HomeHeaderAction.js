@@ -11,6 +11,7 @@ import {
 } from './actionConstants';
 import { getFetch, getFetches, getRaceSchedule } from '../model/api';
 import { lapCalc } from '../utils/util';
+import type { TypeInput } from '../components/types';
 
 const badgeCountAction = (count: number) => ({
   type: BADGE_COUNT,
@@ -37,7 +38,7 @@ const searchAction = (lapNumber: number) =>
     },
   }));
 
-const searchAllAction = (input: Object, fetchedRoundNumber: number) =>
+const searchAllAction = (input: TypeInput, fetchedRoundNumber: number) =>
   (fetchedRoundNumber === input.round
     ? {
       type: SEARCH,
