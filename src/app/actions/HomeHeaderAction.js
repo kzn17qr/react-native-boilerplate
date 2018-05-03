@@ -5,9 +5,11 @@ import {
   SEARCH,
   LOADING,
   INPUT_LAP,
-  INPUT_DRIVER,
+  // INPUT_DRIVER,
+  GET_SCHEDULE,
+  INPUT_ROUND,
 } from './actionConstants';
-import { getFetch, getFetches } from '../model/api';
+import { getFetch, getFetches, getRaceSchedule } from '../model/api';
 import { lapCalc } from '../utils/util';
 
 const badgeCountAction = (count: number) => ({
@@ -18,6 +20,14 @@ const badgeCountAction = (count: number) => ({
   },
 });
 
+const getScheduleAction = (year: number) =>
+  getRaceSchedule(year).then(data => ({
+    type: GET_SCHEDULE,
+    payload: {
+      data,
+    },
+  }));
+
 const searchAction = (lapNumber: number) =>
   getFetch(lapNumber).then(data => ({
     type: SEARCH,
@@ -27,25 +37,25 @@ const searchAction = (lapNumber: number) =>
     },
   }));
 
-const searchAllAction = (input: Object, isFetched: boolean) =>
-  (isFetched
+const searchAllAction = (input: Object, fetchedRoundNumber: number) =>
+  (fetchedRoundNumber === input.round
     ? {
       type: SEARCH,
       payload: {
         data: null,
         input,
         isLoading: false,
-        isFetched: true,
+        fetchedRoundNumber,
       },
     }
-    : getFetches()
+    : getFetches(input.round)
       .then(data => lapCalc(data, input))
       .then(data => ({
         type: SEARCH,
         payload: {
           data,
           isLoading: false,
-          isFetched: true,
+          fetchedRoundNumber: input.round,
         },
       })));
 
@@ -63,18 +73,27 @@ const setLapNumber = (laps: number) => ({
   },
 });
 
-const setDriver = (driverId: string) => ({
-  type: INPUT_DRIVER,
+const setRoundNumber = (round: number) => ({
+  type: INPUT_ROUND,
   payload: {
-    driverId,
+    round,
   },
 });
 
+// const setDriver = (driverId: string) => ({
+//   type: INPUT_DRIVER,
+//   payload: {
+//     driverId,
+//   },
+// });
+
 export {
   badgeCountAction,
+  getScheduleAction,
   searchAction,
   searchAllAction,
   loading,
   setLapNumber,
-  setDriver,
+  setRoundNumber,
+  // setDriver,
 };

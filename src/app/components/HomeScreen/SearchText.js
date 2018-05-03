@@ -3,11 +3,11 @@
 import React from 'react';
 import { Body, List, Text, Spinner, View, ListItem, Right } from 'native-base';
 
-import ApiService from '../../model/apiService';
+import { LapEntity } from '../../model/apiService';
 import { styles } from '../../assets/styles';
 
 type TypeProps = {
-  data: ApiService,
+  data: LapEntity,
   isLoading: boolean,
 };
 
@@ -17,20 +17,26 @@ const SearchText = ({ data, isLoading }: TypeProps) => {
   if (Object.keys(data).length === 0) return '';
   return (
     <View>
-      <Text>[Race] {data.raceName}</Text>
-      {/**/}
+      <Text>
+        [Race] {data.raceName} [Laps] {data.GapData[0].laps}
+      </Text>
       <List
-        dataArray={data.Laps[0].Timings}
+        style={styles.searchList}
+        // dataArray={data.Laps[0].Timings}
+        dataArray={data.GapData}
         renderRow={item => (
-          <ListItem style={styles.searchList}>
+          <ListItem style={styles.searchListItem}>
             <Body style={styles.searchBody}>
               <Text style={styles.searchTextNo}>{item.position}</Text>
 
-              <Text>{item.driverId}</Text>
+              <Text style={styles.searchDriver}>{item.driverId}</Text>
             </Body>
 
             <Right>
-              <Text>{item.time}</Text>
+              {/* <Text>{item.time}</Text> */}
+              <Text style={styles.searchTime}>
+                {item.position === '1' ? item.times : item.gap}
+              </Text>
             </Right>
           </ListItem>
         )}

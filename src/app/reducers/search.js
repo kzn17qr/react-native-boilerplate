@@ -1,7 +1,7 @@
 // @flow
 
 import { SEARCH, LOADING } from '../actions/actionConstants';
-import ApiService from '../model/apiService';
+import { LapEntity } from '../model/apiService';
 import { lapCalc } from '../utils/util';
 
 const initialState = {
@@ -15,10 +15,10 @@ type TypeState = {
 type TypeAction = {
   type: string,
   payload: {
-    data: ApiService,
+    data: LapEntity,
     input: Object,
     isLoading: boolean,
-    isFetched: boolean,
+    fetchedRoundNumber: number,
   },
 };
 
@@ -30,13 +30,13 @@ const searchReducer = (state: TypeState = initialState, action: TypeAction) => {
           ...state,
           data: lapCalc(state.data, action.payload.input),
           isLoading: action.payload.isLoading,
-          isFetched: action.payload.isFetched,
+          fetchedRoundNumber: action.payload.fetchedRoundNumber,
         }
         : {
           ...state,
           data: action.payload.data,
           isLoading: action.payload.isLoading,
-          isFetched: action.payload.isFetched,
+          fetchedRoundNumber: action.payload.fetchedRoundNumber,
         };
     case LOADING:
       return { ...state, isLoading: action.payload.isLoading };

@@ -1,6 +1,6 @@
 // @flow
 
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
@@ -15,14 +15,29 @@ export const styles = StyleSheet.create({
     fontSize: 24,
   },
   searchList: {
-    height: 45,
+    paddingHorizontal: 2,
+  },
+  searchListItem: {
+    height: 42,
+    marginLeft: 0,
+    marginTop: 0,
   },
   searchBody: {
     flexDirection: 'row',
   },
   searchTextNo: {
-    width: 18,
-    marginHorizontal: 8,
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
     textAlign: 'right',
+    width: 18,
+  },
+  searchDriver: {
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+    marginHorizontal: 2,
+  },
+  searchTime: {
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+    textAlign: 'right',
+    marginHorizontal: 2,
+    width: 105,
   },
 });

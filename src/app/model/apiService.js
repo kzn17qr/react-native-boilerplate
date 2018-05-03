@@ -1,14 +1,38 @@
 // @flow
 
-class ApiService {
+class ScheduleEntity {
+  Races: Array<{
+    season: number,
+    round: number,
+    url: string,
+    raceName: string,
+    Circuit: Object,
+    date: string,
+  }>;
+
+  constructor(props: *) {
+    const { MRData: { RaceTable } } = props;
+    Object.assign(this, RaceTable);
+  }
+}
+
+class LapEntity {
   season: number;
   round: number;
   url: string;
   raceName: string;
-  Circuit: Object;
+  // Circuit: Object;
   date: string;
-  Laps: Object[];
+  Laps: Array<{
+    number: number,
+    Timings: Array<{
+      driverId: string,
+      position: string,
+      time: string,
+    }>,
+  }>;
   // RaceTable: Object;
+  GapData: Array<Object>;
 
   constructor(props: *) {
     const { MRData: { RaceTable: { Races } } } = props;
@@ -16,4 +40,4 @@ class ApiService {
   }
 }
 
-export default ApiService;
+export { ScheduleEntity, LapEntity };

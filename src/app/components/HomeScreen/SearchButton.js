@@ -12,20 +12,20 @@ import {
 
 type TypeInput = {
   laps: number,
-  driverId: string,
+  // driverId: string,
 };
 
 type TypeProps = {
   onClick: Function,
   input: TypeInput,
-  isFetched: boolean,
+  fetchedRoundNumber: number,
 };
 
-const SearchButton = ({ onClick, input, isFetched }: TypeProps) => (
+const SearchButton = ({ onClick, input, fetchedRoundNumber }: TypeProps) => (
   <Button
     transparent
     onPress={() => {
-      onClick(input, isFetched);
+      onClick(input, fetchedRoundNumber);
     }}
   >
     <Icon name="search" />
@@ -34,14 +34,15 @@ const SearchButton = ({ onClick, input, isFetched }: TypeProps) => (
 
 const mapStateToProps = state => ({
   input: state.input,
-  isFetched: state.search.isFetched,
+  fetchedRoundNumber: state.search.fetchedRoundNumber,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClick: (input, isFetched) => {
+  onClick: (input, fetchedRoundNumber) => {
     dispatch(loading(true));
     // dispatch(searchAction(lapNumber));
-    dispatch(searchAllAction(input, isFetched));
+    // console.log(`fetchedRoundNumber=${fetchedRoundNumber} input.round=${input.round}`);
+    dispatch(searchAllAction(input, fetchedRoundNumber));
   },
 });
 
