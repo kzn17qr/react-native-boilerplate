@@ -20,6 +20,8 @@ const lapCalc = (data: LapEntity, input: Object): LapEntity => {
   const [mIdx, sIdx] = [1, 4];
   input.driverId = input.driverId.toLowerCase();
 
+  if (!data.Laps) return data;
+
   data.Laps.forEach((lapData) => {
     if (input.laps < parseInt(lapData.number, 10)) return;
     // lapData.Timings.filter(timingData => timingData.driverId === input.driverId).forEach((x) => {

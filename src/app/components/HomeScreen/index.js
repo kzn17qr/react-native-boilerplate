@@ -6,7 +6,7 @@ import {
   Content,
   Button,
   Icon,
-  // Text,
+  Text,
   Form,
   Item,
   Input,
@@ -81,6 +81,13 @@ const HomeScreenWithoutLC = ({
               />
               ))}
         </Picker>
+        <Text style={styles.pickerText}>
+          {Object.keys(schedules).length === 0
+            ? ''
+            : `${schedules.Races[round - 1].Circuit.circuitName} ${
+                schedules.Races[round - 1].date
+              }`}
+        </Text>
         <Item>
           <Input
             keyboardType="numeric"

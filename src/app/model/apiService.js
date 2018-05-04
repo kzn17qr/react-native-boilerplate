@@ -7,6 +7,7 @@ class ScheduleEntity {
     url: string,
     raceName: string,
     Circuit: {
+      circuitName: string,
       Location: {
         country: string,
       },
