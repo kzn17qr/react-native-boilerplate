@@ -8,6 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "hoek": "^5.0.3",
     "native-base": "^2.3.10",
     "prop-types": "^15.6.1",
     "react": "16.3.0-alpha.1",
