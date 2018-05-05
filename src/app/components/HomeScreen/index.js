@@ -143,8 +143,8 @@ const HomeScreenWithoutLC = ({
         <Item>
           <Input placeholder="Password" />
         </Item>
-      </Form>
-      <Button
+      </Form> */}
+      {/* <Button
         bordered
         transparent
         block
@@ -153,8 +153,8 @@ const HomeScreenWithoutLC = ({
       >
         <Icon name="create" />
         <Text>Edit</Text>
-      </Button>
-      <Button
+      </Button> */}
+      {/* <Button
         block
         onPress={() =>
           ActionSheet.show(
@@ -183,9 +183,11 @@ const HomeScreen = lifecycle({
   },
 })(HomeScreenWithoutLC);
 
-HomeScreen.navigationOptions = {
-  header: <HomeHeader />,
-};
+HomeScreen.navigationOptions = ({ navigation }) => ({
+  header: (
+    <HomeHeader nav={() => navigation.navigate('Edit', { title: 'Edit' })} />
+  ),
+});
 
 const mapStateToProps = state => ({
   count: state.badgeCount.count,

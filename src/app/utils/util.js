@@ -8,6 +8,9 @@ type TypeDriver = {
   position: string,
   ts: Date,
   times: string,
+  gap: string,
+  gapTime: number,
+  color: string,
 };
 
 type TypeCompare = {
@@ -35,6 +38,8 @@ const lapCalc = (data: LapEntity, input: Object): LapEntity => {
           ts: new Date(1970, 0, 1),
           times: '',
           gap: '',
+          gapTime: -1,
+          color: 'red',
         };
         obj[x.driverId] = driverData;
       }
@@ -67,7 +72,8 @@ const lapCalc = (data: LapEntity, input: Object): LapEntity => {
   // topts = obj[topKey].ts;
   Object.keys(obj).forEach((k) => {
     if (obj[k].laps === `${input.laps}`) {
-      obj[k].gap = `+${formatTime(new Date(obj[k].ts - topts), true)}`;
+      obj[k].gapTime = obj[k].ts - topts;
+      obj[k].gap = `+${formatTime(new Date(obj[k].gapTime), true)}`;
     } else {
       obj[k].position = '-';
       obj[k].gap = `${obj[k].laps} LAPS`;
@@ -91,7 +97,7 @@ const lapCalc = (data: LapEntity, input: Object): LapEntity => {
   ]));
 
   data.GapData = objLst;
-  // console.log(data.GapData);
+  console.log(data.GapData);
   return data;
 };
 
@@ -121,8 +127,8 @@ const sortObj = (key: string, isDesc: boolean): Function => (
 
   let xValue = typeof x[key] === 'string' ? x[key].toUpperCase() : x[key];
   let yValue = typeof y[key] === 'string' ? y[key].toUpperCase() : y[key];
-  xValue = Number.isNaN(xValue) ? xValue : Number(xValue);
-  yValue = Number.isNaN(yValue) ? yValue : Number(yValue);
+  xValue = Number.isNaN(Number(xValue)) ? xValue : Number(xValue);
+  yValue = Number.isNaN(Number(yValue)) ? yValue : Number(yValue);
 
   let compareResult = 0;
   if (xValue < yValue) compareResult = -1;

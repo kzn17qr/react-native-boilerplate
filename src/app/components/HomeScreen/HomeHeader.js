@@ -6,7 +6,11 @@ import { Header, Left, Right, Body, Segment, Button, Text } from 'native-base';
 import MenuButton from './MenuButton';
 import SearchButton from './SearchButton';
 
-const HomeHeader = () => (
+type TypeProps = {
+  nav: Function,
+};
+
+const HomeHeader = ({ nav }: TypeProps) => (
   <Header hasTabs>
     <Left>
       <MenuButton />
@@ -15,11 +19,11 @@ const HomeHeader = () => (
     <Body>
       {/* <Title>{navigation.title}</Title> */}
       <Segment>
-        <Button first>
-          <Text>Seg1</Text>
+        <Button first active disabled>
+          <Text>-</Text>
         </Button>
-        <Button last active>
-          <Text>Seg2</Text>
+        <Button last onPress={nav}>
+          <Text>Gap</Text>
         </Button>
       </Segment>
     </Body>

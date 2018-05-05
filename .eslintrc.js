@@ -27,5 +27,6 @@ module.exports = {
     'consistent-return': [0],
     'react/require-default-props': [0],
     'react/default-props-match-prop-types': [0, { allowRequiredDefaults: 1 }],
+    'no-mixed-operators': [0],
   },
 };
