@@ -185,7 +185,7 @@ const HomeScreen = lifecycle({
 
 HomeScreen.navigationOptions = ({ navigation }) => ({
   header: (
-    <HomeHeader nav={() => navigation.navigate('Edit', { title: 'Edit' })} />
+    <HomeHeader nav={() => navigation.navigate('Edit', { title: 'Gap' })} />
   ),
 });
 

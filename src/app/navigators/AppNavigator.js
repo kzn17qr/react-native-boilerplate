@@ -24,7 +24,7 @@ export const RootStack = StackNavigator(
     Edit: {
       screen: EditScreen,
       navigationOptions: {
-        title: 'Edit',
+        title: 'Gap',
       },
     },
   },
